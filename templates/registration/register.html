@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block css %}
+.goback{
+    text-decoration: none; 
+    padding: 15px 30px;
+    display: inline-block;
+    color: white;  
+    background-color: #dc3545;
+    border:2px solid black;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.goback:hover{
+    background-color: red;
+}
+
+.form-control{
+    border: 2px solid black;
+    border-radius: 0;
+    height: 50px;
+    width: 300px;
+}
+{% endblock %}
+
+
+{% block body %}
+    <div>
+        <form class="d-flex flex-column justify-content-center align-items-center" action="" method="post" >
+            {%csrf_token%}
+            <div class="form-group">
+                <label for="text">Your Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" minlength="4" required>
+            </div><br>
+            <div class="form-group">
+                <label for="password">Create A New Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="New Password" minlength="6" required>
+            </div><br>
+            <div class="form-group">
+                <label for="password">Confirm Your Password</label>
+                <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password" minlength="6" required>
+            </div><br>
+            <div class="mt-3" style="width:300px;">
+                <button type="submit" name="" id="" class="goback">Register</button>
+                <a href="{% url 'login' %}" class="goback">Go Back</a>
+            </div>
+            <div class="mt-3" style="width:300px;">
+                <span class="text-danger" style="font-size: medium; font-weight: bold;">{{message.error}}</span>
+                <span class="text-success" style="font-size: medium; font-weight: bold;">{{message.success}}</span>
+            </div>
+        </form>
+    </div>
+{% endblock %}

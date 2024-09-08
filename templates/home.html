@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block css %}
+.goback{
+    text-decoration: none; 
+    padding: 15px 30px;
+    color: white;  
+    background-color: #dc3545;
+    border:2px solid black;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.goback:hover{
+    background-color: red;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input::before {
+    content: 'Browse';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 8px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 10pt;
+    transition: 0.5s;
+}
+.custom-file-input:hover::before {
+    border-color: #dc3545;
+}
+.custom-file-input:active::before {
+    background: #dc3545;
+}
+{% endblock %}
+
+
+{% block body %}
+    <div>
+        <form class="d-flex flex-column justify-content-center align-items-center" action="/result" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div>
+                <input type="file" id="image" name="image" class="custom-file-input">
+            </div>
+            <div class="mt-5">
+                <input type="submit" name="" id="" class="goback">
+            </div>
+        </form>
+    </div>
+{% endblock %}
